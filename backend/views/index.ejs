@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Carros</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <table>
+        <thead>
+            <td>Nombre</td>
+            <td>Apellido</td>
+            <td>Carro</td>
+            <td>Modelo</td>
+            <td>Precio</td>
+            <td>Kilometraje</td>
+            <td>Acciones</td>
+        </thead>
+        <tr>
+            <td><%= data [1].body.data.name %></td>
+            <td><%= data [1].body.data.lastName %></td>
+            <td><%= data [1].body.data.car %></td>
+            <td><h4><%= data [1].body.data.model %></h4></td>
+            <td><h4><%= data [1].body.data.price %></h4></td>
+            <td><%= data [1].body.data.trip %></td>
+            <td><button>Comprar</button></td>
+        </tr>
+        <tr>
+            <td><%= data [2].body.data.name %></td>
+            <td><%= data [2].body.data.lastName %></td>
+            <td><%= data [2].body.data.car %></td>
+            <td><h4><%= data [2].body.data.model %></h4></td>
+            <td><h4><%= data [2].body.data.price %></h4></td>
+            <td><%= data [2].body.data.trip %></td>
+            <td><button>Comprar</button></td>
+        </tr>
+    </table>
+</body>
+</html>
