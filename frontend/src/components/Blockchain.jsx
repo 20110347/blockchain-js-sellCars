@@ -58,7 +58,7 @@ function Blockchain() {
     }
 
     return (
-        <div>
+        <div className='container'>
             <h1>Lista de Blockchain</h1>
             <div className="table">
                 <button
@@ -70,22 +70,23 @@ function Blockchain() {
                 <table className="w-full table-auto">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
-                            <th className="">No.</th>
-                            <th className="">Hash</th>
-                            <th className="">Nombre</th>
-                            <th className="">Apellido</th>
-                            <th className="">Modelo</th>
-                            <th className="">Precio</th>
-                            <th className="">Kilometraje</th>
-                            <th className="">Año</th>
-                            <th className="">Fecha de Compra</th>
+                            <th className="index">No.</th>
+                            <th className="hash">Hash</th>
+                            <th className="name">Nombre</th>
+                            <th className="lastName">Apellido</th>
+                            <th className="model">Modelo</th>
+                            <th className="price">Precio</th>
+                            <th className="trip">Kilometraje</th>
+                            <th className="year">Año</th>
+                            <th className="date">Fecha de Compra</th>
+                            <th className='hash'>Hash Anterior</th>
                         </tr>
                     </thead>
                     <tbody>
                         {data.map((block, index) => (
                             <tr className="bg-white border-b" key={index + 1}>
                                 <td className="py-3 px-1 text-center">{index + 1}</td>
-                                <td className="py-3 px-6 font-medium text-gray-900">
+                                <td className="body-hash">
                                     {block.hash}
                                 </td>
                                 <td className="py-3 px-6 font-medium text-gray-900">
@@ -108,6 +109,10 @@ function Blockchain() {
                                 </td>
                                 <td>
                                     {block.body.data.date}
+                                </td>
+                                <td
+                                    className='body-hash'>
+                                    {block.previousBlockHash}
                                 </td>
                             </tr>
                         ))}

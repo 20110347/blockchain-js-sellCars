@@ -4,18 +4,18 @@ const Block = require('./block')
 
 const blockchain = new Blockchain();
 
-const json = {
-    name: 'juan',
-    lastName: 'perez',
-    model: 'Porshe Carrera GT',
-    year: '2017',
-    trip: '20945',
-    price: '200000',
-    date: '04/12/2023, 11:53:28 am'
-}
+// const json = {
+//     name: 'juan',
+//     lastName: 'perez',
+//     model: 'BMW M3 GTR',
+//     year: '2005',
+//     trip: '20945',
+//     price: '200000',
+//     date: '04/12/2023, 11:53:28 am'
+// }
 
-const block = new Block({ data: json })
-blockchain.addBlock(block)
+// const block = new Block({ data: json })
+// blockchain.addBlock(block)
 
 exports.createNewBlock = asyncHandler(async (req, res) => {
 

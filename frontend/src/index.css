@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:200');
 
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -25,11 +31,8 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -50,16 +53,19 @@ h1 {
   }
 }
 
+.container{
+  width: max-content;
+}
+
 td {
   padding-top: 3px;
   padding-bottom: 3px;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 form{
   display: grid;
-  align-items: first baseline;
 }
 
 label{
@@ -131,9 +137,6 @@ button:focus-visible {
   width: 320px;
 }
 
-
-
-
 #box {
   display: flex;
   align-items: center;
@@ -177,4 +180,37 @@ button:focus-visible {
 	100% {
 		background-position: 0% 50%;
 	}
+}
+
+.index {
+  color: #b3a807;
+}
+.name {
+  color: #7407b3;
+}
+.price {
+  color: #b3076b;
+}
+.trip {
+  color: #7fb307;
+}
+.model {
+  color: rgb(32, 173, 255);
+}
+.lastName {
+  color: #b3071e;
+}
+.year {
+  color: #b34c07;
+}
+.date {
+  color: #0752b3;
+}
+
+.hash {
+  color: #07b39b;
+}
+
+.body-hash{
+  color: #ff79cc;
 }
