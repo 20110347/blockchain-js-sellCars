@@ -12,20 +12,9 @@ const json = {
     trip: '20945',
     price: '200000'
 }
-const json2 = {
-    name: 'israel',
-    lastName: 'flores',
-    model: 'Mitsubishi Lancer Evo 7',
-    year: '2015',
-    trip: '54502',
-    price: '150000'
-}
-const block1 = new Block({ data: json })
-blockchain.addBlock(block1)
-const block2 = new Block({ data: json2 })
-blockchain.addBlock(block2)
-blockchain.print()
 
+const block = new Block({ data: json })
+blockchain.addBlock(block)
 
 exports.createNewBlock = asyncHandler(async (req, res) => {
 
