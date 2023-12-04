@@ -78,15 +78,19 @@ input {
   background-color: transparent;
   font-weight: bold;
   color: white;
-  transition: border-color 0.3s ease;
+  transition: box-shadow 0.5s ease;
 }
 
 input:hover {
-  border-color: #ff79cc;
+  outline: none !important;
+  border:1px solid #07b39b;
+  box-shadow: 0 0 10px #07b39b;
 }
 
 input:focus {
-  border-color: #ff79cc;
+  outline: none !important;
+  border:1px solid #ff79cc;
+  box-shadow: 0 0 10px #ff79cc;
 }
 
 
