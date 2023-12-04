@@ -10,7 +10,8 @@ const json = {
     model: 'Porshe Carrera GT',
     year: '2017',
     trip: '20945',
-    price: '200000'
+    price: '200000',
+    date: '04/12/2023, 11:53:28 am'
 }
 
 const block = new Block({ data: json })
@@ -37,6 +38,17 @@ exports.getBlockchain = asyncHandler(async (req, res) => {
 
         res.status(200).json(response)
 
+    } catch (e) {
+        res.status(500).json({ msg: e.message });
+    }
+})
+
+exports.getLatestBlock = asyncHandler(async (req, res) => {
+
+    try {
+        const response = await blockchain.getLastestBlock();
+        console.log(response)
+        res.status(200).json(response)
     } catch (e) {
         res.status(500).json({ msg: e.message });
     }

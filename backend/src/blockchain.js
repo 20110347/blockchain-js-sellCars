@@ -83,6 +83,12 @@ class Blockchain {
             console.log(block.toString());
         }
     }
+
+    getLastestBlock(){
+        let self = this;
+        const lastBlock = self.chain[self.chain.length - 1]
+        return {...lastBlock, body: JSON.parse(lastBlock.body.toString())}
+    }
 }
 
 module.exports = Blockchain

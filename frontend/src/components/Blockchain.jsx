@@ -1,17 +1,11 @@
-import { useState, React, useEffect } from 'react'
-import { Modal, Form, Flex } from 'antd';
+import { React } from 'react'
+import { useNavigate } from "react-router-dom";
 import useSWR from 'swr'
 import api from '../api/api'
 
 function Blockchain() {
 
-    const [blocks, setBlocks] = useState([])
-
-    const [selectedBlock, setSelectedBlock] = useState({})
-    const [name, setName] = useState()
-    const [lastName, setLastName] = useState()
-    const [trip, setTrip] = useState()
-    const [price, setPrice] = useState()
+    const navigate = useNavigate()
 
     const fetcher = async () => {
         const response = await api.get("/blockChain");
@@ -22,45 +16,57 @@ function Blockchain() {
 
     if (error) return <div>Hubo un error al obtener los datos</div>
     if (isLoading) return <div>Cargando...</div>
-    
-    useEffect (() => {
-        if(data){
-            setBlocks(data)
-        }
-    }, [data])
 
-    const [visible, setVisible] = useState(false);
-    const [form] = Form.useForm();
+    // useEffect (() => {
+    //     if(data){
+    //         setBlocks(data)
+    //     }
+    // }, [data])
 
-    const showModal = (block) => {
-        setSelectedBlock(block)
-        console.log(block)
-        setVisible(true)
+    // const [visible, setVisible] = useState(false);
+    // const [form] = Form.useForm();
+
+    // const showModal = (block) => {
+    //     setSelectedBlock(block)
+    //     console.log(block)
+    //     setVisible(true)
+    // }
+
+    // const handleSubmit = async () => {
+    //     try {
+    //         const block = await api.post('/newBlock', {
+    //             name: name,
+    //             lastName: lastName,
+    //             model: selectedBlock.body.data.model,
+    //             year: selectedBlock.body.data.year,
+    //             trip: trip,
+    //             price: price
+    //         })
+    //         setVisible(false)
+    //     }catch(err){console.error(err)}
+    // }
+
+    // const handleCancel = () => {
+    //     setVisible(false)
+    //     form.resetFields()
+    // };
+
+    const handleBuy = async () => {
+        const res = await api.get('/lastBlock')
+        console.log(res.data)
+        navigate('/addBlock', {state: res.data})
     }
-
-    const handleSubmit = async () => {
-        try {
-            const block = await api.post('/newBlock', {
-                name: name,
-                lastName: lastName,
-                model: selectedBlock.body.data.model,
-                year: selectedBlock.body.data.year,
-                trip: trip,
-                price: price
-            })
-            setVisible(false)
-        }catch(err){console.error(err)}
-    }
-
-    const handleCancel = () => {
-        setVisible(false)
-        form.resetFields()
-    };
 
     return (
         <div>
             <h1>Lista de Blockchain</h1>
             <div className="table">
+                <button
+                    onClick={handleBuy}
+                    className="btn-delivery"
+                >
+                    Comprar
+                </button>
                 <table className="w-full table-auto">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-200">
                         <tr>
@@ -72,11 +78,11 @@ function Blockchain() {
                             <th className="">Precio</th>
                             <th className="">Kilometraje</th>
                             <th className="">Año</th>
-                            <th className="">Acciones</th>
+                            <th className="">Fecha de Compra</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {blocks.map((block, index) => (
+                        {data.map((block, index) => (
                             <tr className="bg-white border-b" key={index + 1}>
                                 <td className="py-3 px-1 text-center">{index + 1}</td>
                                 <td className="py-3 px-6 font-medium text-gray-900">
@@ -101,28 +107,7 @@ function Blockchain() {
                                     {block.body.data.year}
                                 </td>
                                 <td>
-                                    <button
-                                        onClick={() => showModal(block)}
-                                        className="btn-delivery"
-                                    >
-                                        Comprar
-                                    </button>
-                                    <Modal open={visible} onOk={form.submit} onCancel={handleCancel}>
-                                        <Form form={form} onFinish={() => handleSubmit()} className='formAnt'>
-                                            <label>Nombre</label>
-                                            <input type="text" value={block.body.data.name} onChange={e => setName(e.target.value)}/>
-                                            <label>Apellido</label>
-                                            <input type="text" value={block.body.data.lastName} onChange={e => setLastName(e.target.value)}/>
-                                            <label>Modelo</label>
-                                            <h4>{block.body.data.model}</h4>
-                                            <label>Año</label>
-                                            <h4>{block.body.data.year}</h4>
-                                            <label>Kilometraje</label>
-                                            <input type="text" value={block.body.data.trip} onChange={e => setTrip(e.target.value)}/>
-                                            <label>Precio</label>
-                                            <input type="number" value={block.body.data.price} onChange={e => setPrice(e.target.value)}/>
-                                        </Form>
-                                    </Modal>
+                                    {block.body.data.date}
                                 </td>
                             </tr>
                         ))}
