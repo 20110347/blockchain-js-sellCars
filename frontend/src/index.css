@@ -73,3 +73,38 @@ td {
   padding-left: 6px;
   padding-right: 6px;
 }
+
+.formAnt{
+  display: grid;
+  align-items: first baseline;
+}
+
+label{
+  padding-top: 5px;
+  color: #535bf2;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5rem;
+  border: double 3px transparent;
+  border-radius: 6px;
+  background-image: linear-gradient(white, white), 
+                    linear-gradient(to right, #073b4c, #646cff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  font-weight: bold;
+  color: black;
+}
+
+input:focus {
+  font-weight: bold;
+  color: white;
+  padding: 0.5rem;
+  border: double 3px transparent;
+  border-radius: 6px;
+  background-image: linear-gradient(rgb(29, 28, 28), rgb(29, 28, 28)), 
+                    linear-gradient(to right, #073b4c, #646cff);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}

@@ -40,7 +40,7 @@ function Blockchain() {
 
     const handleSubmit = async () => {
         try {
-            await api.post('/newBlock', {
+            const block = await api.post('/newBlock', {
                 name: name,
                 lastName: lastName,
                 model: selectedBlock.body.data.model,
@@ -108,19 +108,19 @@ function Blockchain() {
                                         Comprar
                                     </button>
                                     <Modal open={visible} onOk={form.submit} onCancel={handleCancel}>
-                                        <Form form={form} onFinish={() => handleSubmit()} styles={Flex}>
+                                        <Form form={form} onFinish={() => handleSubmit()} className='formAnt'>
                                             <label>Nombre</label>
-                                            <input type="text" onChange={e => setName(e.target.value)}/>
+                                            <input type="text" value={block.body.data.name} onChange={e => setName(e.target.value)}/>
                                             <label>Apellido</label>
-                                            <input type="text" onChange={e => setLastName(e.target.value)}/>
+                                            <input type="text" value={block.body.data.lastName} onChange={e => setLastName(e.target.value)}/>
                                             <label>Modelo</label>
                                             <h4>{block.body.data.model}</h4>
                                             <label>Año</label>
                                             <h4>{block.body.data.year}</h4>
                                             <label>Kilometraje</label>
-                                            <input type="text" onChange={e => setTrip(e.target.value)}/>
+                                            <input type="text" value={block.body.data.trip} onChange={e => setTrip(e.target.value)}/>
                                             <label>Precio</label>
-                                            <input type="number" onChange={e => setPrice(e.target.value)}/>
+                                            <input type="number" value={block.body.data.price} onChange={e => setPrice(e.target.value)}/>
                                         </Form>
                                     </Modal>
                                 </td>
