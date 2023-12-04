@@ -1,13 +1,10 @@
-import express from 'express';
+const express = require('express')
 
-import{
-    getBlockchain,
-    createNewBlock
-} from "../src/blockchainController.js";
+const blockChainController = require('../src/blockchainController')
 
 const router = express.Router();
 
-router.get('/blockChain', getBlockchain);
-router.post('/newBlock', createNewBlock);
+router.get('/blockChain', blockChainController.getBlockchain);
+router.post('/newBlock', blockChainController.createNewBlock);
 
-export default router;
+module.exports = router;
